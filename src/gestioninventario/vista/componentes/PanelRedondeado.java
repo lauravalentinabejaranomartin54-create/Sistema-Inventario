@@ -7,16 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-/**
- * Panel tipo "tarjeta": fondo blanco, esquinas redondeadas y sombra suave.
- * Trae un margen interior para que el contenido no toque los bordes.
- *
- * En el diseñador de NetBeans aparecen las propiedades colorFondo y radio.
- *
- * @author Master
- */
 public class PanelRedondeado extends JPanel {
-
     private static final int SOMBRA = 5;
     private Color colorFondo = Color.WHITE;
     private int radio = 30;
@@ -50,10 +41,8 @@ public class PanelRedondeado extends JPanel {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         int ancho = getWidth() - SOMBRA;
         int alto = getHeight() - SOMBRA;
-        // Sombra lila translúcida
         g2.setColor(new Color(142, 98, 196, 40));
         g2.fillRoundRect(SOMBRA, SOMBRA, ancho, alto, radio, radio);
-        // Tarjeta
         g2.setColor(colorFondo);
         g2.fillRoundRect(0, 0, ancho, alto, radio, radio);
         g2.setColor(Estilos.BORDE);

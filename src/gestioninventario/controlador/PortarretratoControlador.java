@@ -7,15 +7,7 @@ import gestioninventario.util.Validaciones;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Controlador de la categoría Portarretratos.
- * Implementa la interfaz Controlador usando Portarretrato como TipoProducto.
- *
- * @author Master
- */
 public class PortarretratoControlador implements Controlador<Portarretrato> {
-
-    // Dependencia hacia el DAO
     private final PortarretratoDAO portarretratoDAO;
 
     public PortarretratoControlador() {
@@ -50,7 +42,6 @@ public class PortarretratoControlador implements Controlador<Portarretrato> {
         Validaciones.requerido(producto.getReferencia(), "Referencia", 30);
         Validaciones.requerido(producto.getProducto(), "Producto", 100);
         Validaciones.validarComunes(producto);
-        // La referencia no se puede repetir
         String referencia = producto.getReferencia().trim();
         Portarretrato existente = portarretratoDAO.buscarPorReferencia(referencia);
         Validaciones.validarReferenciaUnica(existente, producto.getId(), referencia);

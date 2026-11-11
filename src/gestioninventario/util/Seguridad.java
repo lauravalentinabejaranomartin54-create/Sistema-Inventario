@@ -8,17 +8,7 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-/**
- * Utilidades para proteger las contraseñas.
- *
- * Usamos PBKDF2 (incluido en Java) con una "sal" aleatoria por usuario.
- * En la base de datos se guarda el texto:  iteraciones:sal:hash
- * Así, aunque alguien vea la tabla usuarios, no puede leer las contraseñas.
- *
- * @author Master
- */
 public final class Seguridad {
-
     private static final String ALGORITMO = "PBKDF2WithHmacSHA256";
     private static final int ITERACIONES = 120_000;
     private static final int LONGITUD_BITS = 256;
@@ -28,7 +18,6 @@ public final class Seguridad {
     private Seguridad() {
     }
 
-    // Genera el hash que se guarda en la base de datos
     public static String generarHash(char[] contrasena) {
         byte[] sal = new byte[LONGITUD_SAL];
         ALEATORIO.nextBytes(sal);
@@ -37,7 +26,6 @@ public final class Seguridad {
         return ITERACIONES + ":" + b64.encodeToString(sal) + ":" + b64.encodeToString(hash);
     }
 
-    // Comprueba si la contraseña escrita coincide con el hash guardado
     public static boolean verificar(char[] contrasena, String hashGuardado) {
         if (contrasena == null || hashGuardado == null) {
             return false;
@@ -51,10 +39,8 @@ public final class Seguridad {
             byte[] sal = Base64.getDecoder().decode(partes[1]);
             byte[] esperado = Base64.getDecoder().decode(partes[2]);
             byte[] calculado = pbkdf2(contrasena, sal, iteraciones);
-            // Comparación en tiempo constante
             return MessageDigest.isEqual(esperado, calculado);
         } catch (IllegalArgumentException e) {
-            // Hash con formato inválido
             return false;
         }
     }

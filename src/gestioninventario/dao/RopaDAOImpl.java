@@ -9,13 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementación JDBC de RopaDAO (tabla "ropa").
- *
- * @author Master
- */
 public class RopaDAOImpl implements RopaDAO {
-
     @Override
     public boolean insertar(Ropa r) throws SQLException {
         String sql = "INSERT INTO ropa (tipo_ropa, marca, color, tallas, "

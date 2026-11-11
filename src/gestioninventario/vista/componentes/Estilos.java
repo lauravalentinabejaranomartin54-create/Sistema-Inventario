@@ -19,28 +19,18 @@ import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
-/**
- * "Hoja de estilos" del sistema: aquí están TODOS los colores y fuentes.
- * Si quieres cambiar un color en todo el programa, cámbialo aquí.
- *
- * @author Master
- */
 public final class Estilos {
+    public static final Color FONDO = new Color(0xFFF4F9);
+    public static final Color ROSADO = new Color(0xF9D3E5);
+    public static final Color LILA = new Color(0xE7DAF7);
+    public static final Color LILA_CLARO = new Color(0xF4EEFC);
+    public static final Color MORADO = new Color(0x8E62C4);
+    public static final Color MORADO_OSCURO = new Color(0x5E3A8C);
+    public static final Color ROSA_FUERTE = new Color(0xD45D93);
+    public static final Color TEXTO = new Color(0x4A2F5E);
+    public static final Color TEXTO_SUAVE = new Color(0x8A6FA0);
+    public static final Color BORDE = new Color(0xDCC8EE);
 
-    // ===== Paleta pastel rosado / morado =====
-    public static final Color FONDO = new Color(0xFFF4F9);          // rosado casi blanco
-    public static final Color ROSADO = new Color(0xF9D3E5);         // rosado pastel
-    public static final Color LILA = new Color(0xE7DAF7);           // lila pastel
-    public static final Color LILA_CLARO = new Color(0xF4EEFC);     // lila muy suave
-    public static final Color MORADO = new Color(0x8E62C4);         // morado principal
-    public static final Color MORADO_OSCURO = new Color(0x5E3A8C);  // títulos
-    public static final Color ROSA_FUERTE = new Color(0xD45D93);    // acento rosado
-    public static final Color TEXTO = new Color(0x4A2F5E);          // texto ciruela
-    public static final Color TEXTO_SUAVE = new Color(0x8A6FA0);    // subtítulos
-    public static final Color BORDE = new Color(0xDCC8EE);          // bordes de campos
-
-    // ===== Fuentes =====
-    // Se usa la primera fuente que esté instalada en el computador
     private static final String FUENTE_DECORATIVA =
             elegirFuente("Segoe Script", "Segoe Print", "Lucida Handwriting", "Serif");
     private static final String FUENTE_BASE =
@@ -52,7 +42,6 @@ public final class Estilos {
     public static final Font TEXTO_NORMAL = new Font(FUENTE_BASE, Font.PLAIN, 14);
     public static final Font TEXTO_NEGRITA = new Font(FUENTE_BASE, Font.BOLD, 14);
 
-    // Constructor privado: esta clase solo tiene constantes y métodos static
     private Estilos() {
     }
 
@@ -67,22 +56,20 @@ public final class Estilos {
         return candidatas[candidatas.length - 1];
     }
 
-    /**
-     * Aplica los colores a los elementos estándar de Swing (mensajes,
-     * barras de desplazamiento, combos...). Se llama una vez desde Main.
-     */
     public static void aplicarTema() {
         try {
-            // Tema multiplataforma: respeta nuestros colores en todos los sistemas
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } catch (Exception e) {
-            // Si falla seguimos con el tema por defecto
         }
         UIManager.put("Panel.background", FONDO);
         UIManager.put("OptionPane.background", FONDO);
         UIManager.put("OptionPane.messageFont", TEXTO_NORMAL);
         UIManager.put("OptionPane.messageForeground", TEXTO);
         UIManager.put("OptionPane.buttonFont", TEXTO_NEGRITA);
+        UIManager.put("OptionPane.yesButtonText", "Sí");
+        UIManager.put("OptionPane.noButtonText", "No");
+        UIManager.put("OptionPane.okButtonText", "Aceptar");
+        UIManager.put("OptionPane.cancelButtonText", "Cancelar");
         UIManager.put("Button.background", LILA);
         UIManager.put("Button.foreground", TEXTO);
         UIManager.put("Button.select", ROSADO);
@@ -108,11 +95,6 @@ public final class Estilos {
         UIManager.put("ToolTip.font", TEXTO_NORMAL);
     }
 
-    /**
-     * Da estilo a un campo de texto: letra, colores y borde redondeado
-     * que se vuelve morado cuando el campo tiene el cursor.
-     * Lo usan CampoTexto y CampoContrasena.
-     */
     public static void estilizarCampo(JTextField campo) {
         campo.setFont(TEXTO_NORMAL);
         campo.setForeground(TEXTO);
@@ -141,10 +123,6 @@ public final class Estilos {
                 BorderFactory.createEmptyBorder(5, 10, 5, 10));
     }
 
-    /**
-     * Da estilo a una tabla: filas intercaladas, precios con formato $,
-     * encabezado del color indicado y anchos de columna sugeridos.
-     */
     public static void estilizarTabla(JTable tabla, JScrollPane scroll, Color colorEncabezado) {
         tabla.setFont(TEXTO_NORMAL);
         tabla.setForeground(TEXTO);
@@ -170,7 +148,6 @@ public final class Estilos {
             public Component getTableCellRendererComponent(JTable t, Object valor,
                     boolean seleccionado, boolean foco, int fila, int columna) {
                 super.getTableCellRendererComponent(t, valor, seleccionado, foco, fila, columna);
-                // Títulos de varias palabras en dos líneas: "Precio<br>importador"
                 String texto = valor == null ? "" : valor.toString();
                 int espacio = texto.indexOf(' ');
                 if (espacio > 0) {
@@ -186,7 +163,6 @@ public final class Estilos {
             }
         });
 
-        // Anchos sugeridos: ID angosta, Característica ancha
         for (int i = 0; i < tabla.getColumnCount(); i++) {
             String titulo = tabla.getColumnName(i);
             int ancho = switch (titulo) {

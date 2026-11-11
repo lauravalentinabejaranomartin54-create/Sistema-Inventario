@@ -1,16 +1,6 @@
 package gestioninventario.modelo;
 
-/**
- * Modelo de la categoría Peluches.
- * Columnas: ID, Referencia, Producto, Color, Característica, Tamaño, Stock,
- * Precio importador, Precio mayorista, Precio al detal.
- *
- * Implementa la interfaz ArticuloInventario.
- *
- * @author Master
- */
 public class Peluche implements ArticuloInventario {
-
     private int id;
     private String referencia;
     private String producto;
@@ -22,11 +12,9 @@ public class Peluche implements ArticuloInventario {
     private double precioMayorista;
     private double precioDetal;
 
-    // Constructor vacío
     public Peluche() {
     }
 
-    // Constructor con todos los atributos
     public Peluche(int id, String referencia, String producto, String color,
             String caracteristica, String tamano, int stock,
             double precioImportador, double precioMayorista, double precioDetal) {

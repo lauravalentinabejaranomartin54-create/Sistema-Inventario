@@ -7,15 +7,7 @@ import gestioninventario.util.Validaciones;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Controlador de la categoría Ropa.
- * Implementa la interfaz Controlador usando Ropa como TipoProducto.
- *
- * @author Master
- */
 public class RopaControlador implements Controlador<Ropa> {
-
-    // Dependencia hacia el DAO
     private final RopaDAO ropaDAO;
 
     public RopaControlador() {
@@ -46,7 +38,6 @@ public class RopaControlador implements Controlador<Ropa> {
         return ropaDAO.eliminar(id);
     }
 
-    // Ropa no tiene referencia, por eso no se valida duplicado
     private void validar(Ropa producto) {
         Validaciones.requerido(producto.getTipoRopa(), "Tipo de ropa", 50);
         Validaciones.requerido(producto.getMarca(), "Marca", 100);

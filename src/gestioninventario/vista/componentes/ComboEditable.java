@@ -6,15 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-/**
- * Lista desplegable en la que también se puede ESCRIBIR un valor que no
- * esté en la lista (por ejemplo un tipo de ropa nuevo).
- * Las opciones se editan en el diseñador con la propiedad "model".
- *
- * @author Master
- */
 public class ComboEditable extends JComboBox<String> {
-
     public ComboEditable() {
         setEditable(true);
         setFont(Estilos.TEXTO_NORMAL);
@@ -29,13 +21,11 @@ public class ComboEditable extends JComboBox<String> {
         }
     }
 
-    // Devuelve lo que el usuario escribió o eligió
     public String getTexto() {
         Object valor = getEditor().getItem();
         return valor == null ? "" : valor.toString().trim();
     }
 
-    // Deja el combo vacío
     public void limpiar() {
         setSelectedItem("");
     }

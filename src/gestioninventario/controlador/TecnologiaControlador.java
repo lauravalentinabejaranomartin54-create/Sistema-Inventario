@@ -7,15 +7,7 @@ import gestioninventario.util.Validaciones;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Controlador de la categoría Tecnología.
- * Implementa la interfaz Controlador usando Tecnologia como TipoProducto.
- *
- * @author Master
- */
 public class TecnologiaControlador implements Controlador<Tecnologia> {
-
-    // Dependencia hacia el DAO
     private final TecnologiaDAO tecnologiaDAO;
 
     public TecnologiaControlador() {
@@ -51,7 +43,6 @@ public class TecnologiaControlador implements Controlador<Tecnologia> {
         Validaciones.requerido(producto.getProducto(), "Producto", 100);
         Validaciones.requerido(producto.getMarca(), "Marca", 100);
         Validaciones.validarComunes(producto);
-        // La referencia no se puede repetir
         String referencia = producto.getReferencia().trim();
         Tecnologia existente = tecnologiaDAO.buscarPorReferencia(referencia);
         Validaciones.validarReferenciaUnica(existente, producto.getId(), referencia);

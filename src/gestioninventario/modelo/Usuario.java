@@ -1,22 +1,13 @@
 package gestioninventario.modelo;
 
-/**
- * Modelo del usuario que inicia sesión en el sistema.
- * La contraseña se guarda como hash, nunca en texto plano.
- *
- * @author Master
- */
 public class Usuario {
-
     private int id;
     private String usuario;
     private String contrasenaHash;
 
-    // Constructor vacío
     public Usuario() {
     }
 
-    // Constructor con todos los atributos
     public Usuario(int id, String usuario, String contrasenaHash) {
         this.id = id;
         this.usuario = usuario;
@@ -49,7 +40,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        // Nunca mostramos el hash de la contraseña
         return usuario;
     }
 }

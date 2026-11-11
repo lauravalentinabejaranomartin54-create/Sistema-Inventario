@@ -9,13 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementación JDBC de PortarretratoDAO (tabla "portarretratos").
- *
- * @author Master
- */
 public class PortarretratoDAOImpl implements PortarretratoDAO {
-
     private static final String SELECT =
             "SELECT id, referencia, producto, " + DaoUtil.COLUMNAS_COMUNES
             + " FROM portarretratos";
@@ -85,7 +79,6 @@ public class PortarretratoDAOImpl implements PortarretratoDAO {
         }
     }
 
-    // Convierte la fila actual del ResultSet en un objeto Portarretrato
     private Portarretrato mapear(ResultSet rs) throws SQLException {
         Portarretrato p = new Portarretrato();
         p.setReferencia(rs.getString("referencia"));

@@ -9,13 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementación JDBC de PelucheDAO (tabla "peluches").
- *
- * @author Master
- */
 public class PelucheDAOImpl implements PelucheDAO {
-
     private static final String SELECT =
             "SELECT id, referencia, producto, color, tamano, " + DaoUtil.COLUMNAS_COMUNES
             + " FROM peluches";
@@ -89,7 +83,6 @@ public class PelucheDAOImpl implements PelucheDAO {
         }
     }
 
-    // Convierte la fila actual del ResultSet en un objeto Peluche
     private Peluche mapear(ResultSet rs) throws SQLException {
         Peluche p = new Peluche();
         p.setReferencia(rs.getString("referencia"));

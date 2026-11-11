@@ -6,15 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
-/**
- * Panel de fondo con degradado diagonal (por defecto rosado → lila).
- *
- * En el diseñador de NetBeans aparecen las propiedades colorInicio y colorFin.
- *
- * @author Master
- */
 public class PanelDegradado extends JPanel {
-
     private Color colorInicio = Estilos.ROSADO;
     private Color colorFin = Estilos.LILA;
 

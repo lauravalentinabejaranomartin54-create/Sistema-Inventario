@@ -9,13 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementación JDBC de TecnologiaDAO (tabla "tecnologia").
- *
- * @author Master
- */
 public class TecnologiaDAOImpl implements TecnologiaDAO {
-
     private static final String SELECT =
             "SELECT id, referencia, producto, marca, " + DaoUtil.COLUMNAS_COMUNES
             + " FROM tecnologia";
@@ -87,7 +81,6 @@ public class TecnologiaDAOImpl implements TecnologiaDAO {
         }
     }
 
-    // Convierte la fila actual del ResultSet en un objeto Tecnologia
     private Tecnologia mapear(ResultSet rs) throws SQLException {
         Tecnologia t = new Tecnologia();
         t.setReferencia(rs.getString("referencia"));

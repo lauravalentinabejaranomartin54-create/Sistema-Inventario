@@ -8,16 +8,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-/**
- * Pinta las celdas de las tablas:
- * - filas intercaladas blanco / lila suave
- * - precios (Double) con formato de moneda y alineados a la derecha
- * - números enteros (ID, stock) centrados
- *
- * @author Master
- */
 public class RenderizadorCelda extends DefaultTableCellRenderer {
-
     @Override
     public Component getTableCellRendererComponent(JTable tabla, Object valor,
             boolean seleccionado, boolean foco, int fila, int columna) {

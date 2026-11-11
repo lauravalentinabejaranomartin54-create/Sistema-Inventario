@@ -4,13 +4,7 @@ import java.awt.Component;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- * Cuadros de diálogo con textos uniformes en todo el sistema.
- *
- * @author Master
- */
 public final class Mensajes {
-
     private Mensajes() {
     }
 

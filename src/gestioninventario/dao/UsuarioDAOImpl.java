@@ -7,13 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Implementación JDBC de UsuarioDAO.
- *
- * @author Master
- */
 public class UsuarioDAOImpl implements UsuarioDAO {
-
     @Override
     public boolean insertar(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuarios (usuario, contrasena) VALUES (?, ?)";
@@ -43,7 +37,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 }
             }
         }
-        // Si no existe retornamos null
         return null;
     }
 }

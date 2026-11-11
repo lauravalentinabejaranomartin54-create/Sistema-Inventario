@@ -9,16 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
 
-/**
- * Botón con esquinas redondeadas que se aclara al pasar el mouse.
- *
- * Se puede usar en el diseñador de NetBeans: en "Propiedades" aparecen
- * colorFondo (color del botón) y radio (qué tan redondas son las esquinas).
- *
- * @author Master
- */
 public class BotonRedondeado extends JButton {
-
     private Color colorFondo = Estilos.MORADO;
     private int radio = 22;
 
@@ -68,7 +59,6 @@ public class BotonRedondeado extends JButton {
         g2.setColor(color);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), radio, radio);
         g2.dispose();
-        // Dibuja el texto encima del fondo
         super.paintComponent(g);
     }
 

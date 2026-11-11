@@ -1,16 +1,6 @@
 package gestioninventario.modelo;
 
-/**
- * Modelo de la categoría Ropa.
- * Columnas: ID, Tipo de ropa, Marca, Color, Característica, Tallas, Stock,
- * Precio importador, Precio mayorista, Precio al detal.
- *
- * Implementa la interfaz ArticuloInventario.
- *
- * @author Master
- */
 public class Ropa implements ArticuloInventario {
-
     private int id;
     private String tipoRopa;
     private String marca;
@@ -22,11 +12,9 @@ public class Ropa implements ArticuloInventario {
     private double precioMayorista;
     private double precioDetal;
 
-    // Constructor vacío
     public Ropa() {
     }
 
-    // Constructor con todos los atributos
     public Ropa(int id, String tipoRopa, String marca, String color,
             String caracteristica, String tallas, int stock,
             double precioImportador, double precioMayorista, double precioDetal) {

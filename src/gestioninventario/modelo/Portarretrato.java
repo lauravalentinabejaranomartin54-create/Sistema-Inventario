@@ -1,16 +1,6 @@
 package gestioninventario.modelo;
 
-/**
- * Modelo de la categoría Portarretratos.
- * Columnas: ID, Referencia, Producto, Característica, Stock,
- * Precio importador, Precio al por mayor, Precio al detal.
- *
- * Implementa la interfaz ArticuloInventario.
- *
- * @author Master
- */
 public class Portarretrato implements ArticuloInventario {
-
     private int id;
     private String referencia;
     private String producto;
@@ -20,11 +10,9 @@ public class Portarretrato implements ArticuloInventario {
     private double precioMayorista;
     private double precioDetal;
 
-    // Constructor vacío
     public Portarretrato() {
     }
 
-    // Constructor con todos los atributos
     public Portarretrato(int id, String referencia, String producto,
             String caracteristica, int stock,
             double precioImportador, double precioMayorista, double precioDetal) {

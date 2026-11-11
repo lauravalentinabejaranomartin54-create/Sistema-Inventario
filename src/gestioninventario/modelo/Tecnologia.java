@@ -1,17 +1,6 @@
 package gestioninventario.modelo;
 
-/**
- * Modelo de la categoría Tecnología.
- * Columnas: ID, Referencia, Producto, Marca, Característica, Stock,
- * Precio importador, Precio mayorista, Precio detal.
- *
- * Implementa la interfaz ArticuloInventario, por eso tiene obligatoriamente
- * los métodos de id, característica, stock y precios (marcados con @Override).
- *
- * @author Master
- */
 public class Tecnologia implements ArticuloInventario {
-
     private int id;
     private String referencia;
     private String producto;
@@ -22,11 +11,9 @@ public class Tecnologia implements ArticuloInventario {
     private double precioMayorista;
     private double precioDetal;
 
-    // Constructor vacío
     public Tecnologia() {
     }
 
-    // Constructor con todos los atributos
     public Tecnologia(int id, String referencia, String producto, String marca,
             String caracteristica, int stock,
             double precioImportador, double precioMayorista, double precioDetal) {

@@ -7,15 +7,7 @@ import gestioninventario.util.Validaciones;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Controlador de la categoría Peluches.
- * Implementa la interfaz Controlador usando Peluche como TipoProducto.
- *
- * @author Master
- */
 public class PelucheControlador implements Controlador<Peluche> {
-
-    // Dependencia hacia el DAO
     private final PelucheDAO pelucheDAO;
 
     public PelucheControlador() {
@@ -52,7 +44,6 @@ public class PelucheControlador implements Controlador<Peluche> {
         Validaciones.requerido(producto.getColor(), "Color", 50);
         Validaciones.requerido(producto.getTamano(), "Tamaño", 50);
         Validaciones.validarComunes(producto);
-        // La referencia no se puede repetir
         String referencia = producto.getReferencia().trim();
         Peluche existente = pelucheDAO.buscarPorReferencia(referencia);
         Validaciones.validarReferenciaUnica(existente, producto.getId(), referencia);

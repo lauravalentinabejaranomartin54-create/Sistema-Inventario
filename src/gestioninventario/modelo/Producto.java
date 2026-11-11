@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package gestioninventario.modelo;
 
-/**
- *
- * @author Master
- */
 public class Producto {
     private int id;
     private String codigo;
@@ -17,11 +9,9 @@ public class Producto {
     private String tono;
     private int stock;
 
-    // Constructor vacío
     public Producto(){
     }
 
-    // Constructor con todos los atributos
     public Producto(int id, String codigo, String nombre, String marca, String caracteristicas, String tono, int stock) {
         this.id = id;
         this.codigo = codigo;

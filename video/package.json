@@ -1,0 +1,22 @@
+{
+  "name": "video-sistema-inventario",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Video de sustentacion del Sistema de Inventario por Categorias (Remotion)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render Sustentacion out/sistema-inventario.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "latest",
+    "@remotion/google-fonts": "latest",
+    "@remotion/transitions": "latest",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}
