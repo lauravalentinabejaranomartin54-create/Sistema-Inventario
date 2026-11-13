@@ -2,11 +2,13 @@ package gestioninventario.modelo;
 
 public class Ropa implements ArticuloInventario {
     private int id;
+    private String referencia;
     private String tipoRopa;
     private String marca;
     private String color;
     private String caracteristica;
     private String tallas;
+    private int stockCurvas;
     private int stock;
     private double precioImportador;
     private double precioMayorista;
@@ -15,15 +17,17 @@ public class Ropa implements ArticuloInventario {
     public Ropa() {
     }
 
-    public Ropa(int id, String tipoRopa, String marca, String color,
-            String caracteristica, String tallas, int stock,
+    public Ropa(int id, String referencia, String tipoRopa, String marca, String color,
+            String caracteristica, String tallas, int stockCurvas, int stock,
             double precioImportador, double precioMayorista, double precioDetal) {
         this.id = id;
+        this.referencia = referencia;
         this.tipoRopa = tipoRopa;
         this.marca = marca;
         this.color = color;
         this.caracteristica = caracteristica;
         this.tallas = tallas;
+        this.stockCurvas = stockCurvas;
         this.stock = stock;
         this.precioImportador = precioImportador;
         this.precioMayorista = precioMayorista;
@@ -38,6 +42,16 @@ public class Ropa implements ArticuloInventario {
     @Override
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String getReferencia() {
+        return referencia;
+    }
+
+    @Override
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 
     public String getTipoRopa() {
@@ -82,6 +96,14 @@ public class Ropa implements ArticuloInventario {
         this.tallas = tallas;
     }
 
+    public int getStockCurvas() {
+        return stockCurvas;
+    }
+
+    public void setStockCurvas(int stockCurvas) {
+        this.stockCurvas = stockCurvas;
+    }
+
     @Override
     public int getStock() {
         return stock;
@@ -123,7 +145,12 @@ public class Ropa implements ArticuloInventario {
     }
 
     @Override
+    public String getDescripcion() {
+        return tipoRopa + " " + marca + " " + color + " (" + tallas + ")";
+    }
+
+    @Override
     public String toString() {
-        return tipoRopa + " - " + marca + " - " + color + " - " + tallas;
+        return referencia + " - " + getDescripcion();
     }
 }

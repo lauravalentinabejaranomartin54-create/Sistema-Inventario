@@ -1,0 +1,13 @@
+{
+  "name": "inventario-service",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "comun": "1.0.0",
+    "express": "^4.21.0"
+  }
+}

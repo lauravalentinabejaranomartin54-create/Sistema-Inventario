@@ -10,56 +10,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RopaDAOImpl implements RopaDAO {
+    private static final String COLUMNAS =
+            "id, referencia, tipo_ropa, marca, color, tallas, stock_curvas, " + DaoUtil.COLUMNAS_COMUNES;
+
     @Override
     public boolean insertar(Ropa r) throws SQLException {
-        String sql = "INSERT INTO ropa (tipo_ropa, marca, color, tallas, "
-                + DaoUtil.COLUMNAS_COMUNES + ") VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO ropa (referencia, tipo_ropa, marca, color, tallas, stock_curvas, "
+                + DaoUtil.COLUMNAS_COMUNES + ") VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try (
                 Connection conexion = Conexion.getInstancia().conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql);) {
-            ps.setString(1, r.getTipoRopa());
-            ps.setString(2, r.getMarca());
-            ps.setString(3, r.getColor());
-            ps.setString(4, r.getTallas());
-            DaoUtil.asignarComunes(ps, 5, r);
+            int siguiente = asignarPropios(ps, r);
+            DaoUtil.asignarComunes(ps, siguiente, r);
             return ps.executeUpdate() > 0;
         }
     }
 
     @Override
     public List<Ropa> listar() throws SQLException {
-        String sql = "SELECT id, tipo_ropa, marca, color, tallas, " + DaoUtil.COLUMNAS_COMUNES
-                + " FROM ropa ORDER BY id DESC";
+        String sql = "SELECT " + COLUMNAS + " FROM ropa ORDER BY id DESC";
         List<Ropa> lista = new ArrayList<>();
         try (
                 Connection conexion = Conexion.getInstancia().conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();) {
             while (rs.next()) {
-                Ropa r = new Ropa();
-                r.setTipoRopa(rs.getString("tipo_ropa"));
-                r.setMarca(rs.getString("marca"));
-                r.setColor(rs.getString("color"));
-                r.setTallas(rs.getString("tallas"));
-                DaoUtil.leerComunes(rs, r);
-                lista.add(r);
+                lista.add(leer(rs));
             }
         }
         return lista;
     }
 
     @Override
-    public boolean actualizar(Ropa r) throws SQLException {
-        String sql = "UPDATE ropa SET tipo_ropa = ?, marca = ?, color = ?, tallas = ?, "
-                + DaoUtil.SET_COMUNES + " WHERE id = ?";
+    public Ropa buscarPorReferencia(String referencia) throws SQLException {
+        String sql = "SELECT " + COLUMNAS + " FROM ropa WHERE referencia = ?";
         try (
                 Connection conexion = Conexion.getInstancia().conectar();
                 PreparedStatement ps = conexion.prepareStatement(sql);) {
-            ps.setString(1, r.getTipoRopa());
-            ps.setString(2, r.getMarca());
-            ps.setString(3, r.getColor());
-            ps.setString(4, r.getTallas());
-            int siguiente = DaoUtil.asignarComunes(ps, 5, r);
+            ps.setString(1, referencia);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? leer(rs) : null;
+            }
+        }
+    }
+
+    @Override
+    public boolean actualizar(Ropa r) throws SQLException {
+        String sql = "UPDATE ropa SET referencia = ?, tipo_ropa = ?, marca = ?, color = ?, tallas = ?, "
+                + "stock_curvas = ?, " + DaoUtil.SET_COMUNES + " WHERE id = ?";
+        try (
+                Connection conexion = Conexion.getInstancia().conectar();
+                PreparedStatement ps = conexion.prepareStatement(sql);) {
+            int siguiente = asignarPropios(ps, r);
+            siguiente = DaoUtil.asignarComunes(ps, siguiente, r);
             ps.setInt(siguiente, r.getId());
             return ps.executeUpdate() > 0;
         }
@@ -73,5 +76,27 @@ public class RopaDAOImpl implements RopaDAO {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         }
+    }
+
+    private int asignarPropios(PreparedStatement ps, Ropa r) throws SQLException {
+        ps.setString(1, r.getReferencia());
+        ps.setString(2, r.getTipoRopa());
+        ps.setString(3, r.getMarca());
+        ps.setString(4, r.getColor());
+        ps.setString(5, r.getTallas());
+        ps.setInt(6, r.getStockCurvas());
+        return 7;
+    }
+
+    private Ropa leer(ResultSet rs) throws SQLException {
+        Ropa r = new Ropa();
+        r.setReferencia(rs.getString("referencia"));
+        r.setTipoRopa(rs.getString("tipo_ropa"));
+        r.setMarca(rs.getString("marca"));
+        r.setColor(rs.getString("color"));
+        r.setTallas(rs.getString("tallas"));
+        r.setStockCurvas(rs.getInt("stock_curvas"));
+        DaoUtil.leerComunes(rs, r);
+        return r;
     }
 }

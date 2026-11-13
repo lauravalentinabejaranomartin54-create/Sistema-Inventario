@@ -4,8 +4,11 @@ import gestioninventario.modelo.Usuario;
 import javax.swing.JFrame;
 
 public class FrmMenu extends javax.swing.JFrame {
+    private final Usuario usuario;
+
     public FrmMenu(Usuario usuario) {
         initComponents();
+        this.usuario = usuario;
         lblSaludo.setText("Hola, " + usuario.getUsuario() + ". Elige la categoría que quieres gestionar");
         setLocationRelativeTo(null);
     }
@@ -21,6 +24,7 @@ public class FrmMenu extends javax.swing.JFrame {
         btnPeluches = new gestioninventario.vista.componentes.BotonRedondeado();
         btnPortarretratos = new gestioninventario.vista.componentes.BotonRedondeado();
         btnCerrarSesion = new gestioninventario.vista.componentes.BotonRedondeado();
+        btnPedidos = new gestioninventario.vista.componentes.BotonRedondeado();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventario - Menú principal");
@@ -57,6 +61,11 @@ public class FrmMenu extends javax.swing.JFrame {
         btnCerrarSesion.setColorFondo(new java.awt.Color(231, 218, 247));
         btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
 
+        btnPedidos.setText("Nuevo pedido / recibo");
+        btnPedidos.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        btnPedidos.setColorFondo(new java.awt.Color(142, 98, 196));
+        btnPedidos.addActionListener(this::btnPedidosActionPerformed);
+
         javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
         pnlFondo.setLayout(pnlFondoLayout);
         pnlFondoLayout.setHorizontalGroup(
@@ -67,6 +76,7 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblSaludo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlFondoLayout.createSequentialGroup()
+                        .addComponent(btnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFondoLayout.createSequentialGroup()
@@ -95,7 +105,9 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addComponent(btnPeluches, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addComponent(btnPortarretratos))
                 .addGap(26, 26, 26)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
@@ -125,6 +137,10 @@ public class FrmMenu extends javax.swing.JFrame {
         new FrmLogin().setVisible(true);
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
+        abrirCategoria(new FrmPedido(this, usuario));
+    }//GEN-LAST:event_btnPedidosActionPerformed
+
     private void abrirCategoria(JFrame ventana) {
         ventana.setVisible(true);
         setVisible(false);
@@ -132,6 +148,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private gestioninventario.vista.componentes.BotonRedondeado btnCerrarSesion;
+    private gestioninventario.vista.componentes.BotonRedondeado btnPedidos;
     private gestioninventario.vista.componentes.BotonRedondeado btnPeluches;
     private gestioninventario.vista.componentes.BotonRedondeado btnPortarretratos;
     private gestioninventario.vista.componentes.BotonRedondeado btnRopa;

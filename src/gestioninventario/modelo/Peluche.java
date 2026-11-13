@@ -40,10 +40,12 @@ public class Peluche implements ArticuloInventario {
         this.id = id;
     }
 
+    @Override
     public String getReferencia() {
         return referencia;
     }
 
+    @Override
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
@@ -120,6 +122,11 @@ public class Peluche implements ArticuloInventario {
     @Override
     public void setPrecioDetal(double precioDetal) {
         this.precioDetal = precioDetal;
+    }
+
+    @Override
+    public String getDescripcion() {
+        return producto + " " + color + " " + tamano;
     }
 
     @Override

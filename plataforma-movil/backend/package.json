@@ -1,0 +1,20 @@
+{
+  "name": "inventario-microservicios",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Microservicios del Sistema de Inventario por Categorias",
+  "workspaces": [
+    "comun",
+    "auth-service",
+    "inventario-service",
+    "pedidos-service",
+    "api-gateway"
+  ],
+  "scripts": {
+    "auth": "npm run start -w auth-service",
+    "inventario": "npm run start -w inventario-service",
+    "pedidos": "npm run start -w pedidos-service",
+    "gateway": "npm run start -w api-gateway",
+    "start": "node iniciar-todo.js"
+  }
+}

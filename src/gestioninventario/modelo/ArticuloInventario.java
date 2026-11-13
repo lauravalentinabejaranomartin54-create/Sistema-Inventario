@@ -5,6 +5,10 @@ public interface ArticuloInventario {
 
     void setId(int id);
 
+    String getReferencia();
+
+    void setReferencia(String referencia);
+
     String getCaracteristica();
 
     void setCaracteristica(String caracteristica);
@@ -24,4 +28,6 @@ public interface ArticuloInventario {
     double getPrecioDetal();
 
     void setPrecioDetal(double precioDetal);
+
+    String getDescripcion();
 }

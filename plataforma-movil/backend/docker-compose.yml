@@ -1,0 +1,53 @@
+services:
+  basedatos:
+    image: mariadb:10.11
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:-inventario123}
+      MARIADB_DATABASE: gestion_inventario
+    volumes:
+      - datos:/var/lib/mysql
+      - ../../database/gestion_inventario.sql:/docker-entrypoint-initdb.d/01-esquema.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 20
+
+  auth-service:
+    build: { context: ., args: { SERVICIO: auth-service } }
+    environment: &entorno
+      DB_HOST: basedatos
+      DB_USER: root
+      DB_PASSWORD: ${DB_PASSWORD:-inventario123}
+      DB_NAME: gestion_inventario
+      JWT_SECRET: ${JWT_SECRET:-cambia-este-secreto}
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:-cambia-este-token}
+      AUTH_URL: http://auth-service:4001
+      INVENTARIO_URL: http://inventario-service:4002
+      PEDIDOS_URL: http://pedidos-service:4003
+    depends_on:
+      basedatos: { condition: service_healthy }
+
+  inventario-service:
+    build: { context: ., args: { SERVICIO: inventario-service } }
+    environment: *entorno
+    depends_on:
+      basedatos: { condition: service_healthy }
+
+  pedidos-service:
+    build: { context: ., args: { SERVICIO: pedidos-service } }
+    environment: *entorno
+    depends_on:
+      basedatos: { condition: service_healthy }
+
+  api-gateway:
+    build: { context: ., args: { SERVICIO: api-gateway } }
+    environment: *entorno
+    ports:
+      - "8080:8080"
+    depends_on:
+      - auth-service
+      - inventario-service
+      - pedidos-service
+
+volumes:
+  datos:

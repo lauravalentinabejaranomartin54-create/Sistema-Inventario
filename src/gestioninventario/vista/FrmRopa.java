@@ -43,6 +43,8 @@ public class FrmRopa extends javax.swing.JFrame {
         btnVolver = new gestioninventario.vista.componentes.BotonRedondeado();
         pnlFormulario = new gestioninventario.vista.componentes.PanelRedondeado();
         lblDatos = new gestioninventario.vista.componentes.Titulo();
+        lblReferencia = new gestioninventario.vista.componentes.Etiqueta();
+        txtReferencia = new gestioninventario.vista.componentes.CampoTexto();
         lblTipoRopa = new gestioninventario.vista.componentes.Etiqueta();
         cmbTipoRopa = new gestioninventario.vista.componentes.ComboEditable();
         lblMarca = new gestioninventario.vista.componentes.Etiqueta();
@@ -53,6 +55,8 @@ public class FrmRopa extends javax.swing.JFrame {
         txtCaracteristica = new gestioninventario.vista.componentes.CampoTexto();
         lblTallas = new gestioninventario.vista.componentes.Etiqueta();
         txtTallas = new gestioninventario.vista.componentes.CampoTexto();
+        lblStockCurvas = new gestioninventario.vista.componentes.Etiqueta();
+        txtStockCurvas = new gestioninventario.vista.componentes.CampoTexto();
         lblStock = new gestioninventario.vista.componentes.Etiqueta();
         txtStock = new gestioninventario.vista.componentes.CampoTexto();
         lblPrecioImportador = new gestioninventario.vista.componentes.Etiqueta();
@@ -98,9 +102,11 @@ public class FrmRopa extends javax.swing.JFrame {
         lblDatos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDatos.setText("Datos del producto");
 
+        lblReferencia.setText("Referencia");
+
         lblTipoRopa.setText("Tipo de ropa");
 
-        cmbTipoRopa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Blusa", "Camiseta", "Camisa", "Pantalón", "Jean", "Falda", "Vestido", "Short", "Chaqueta", "Buzo", "Pijama", "Conjunto" }));
+        cmbTipoRopa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blusa", "Camiseta", "Camisa", "Pantalón", "Jean", "Falda", "Vestido", "Short", "Chaqueta", "Buzo", "Pijama", "Conjunto", "Conjunto deportivo" }));
 
         lblMarca.setText("Marca");
 
@@ -111,6 +117,10 @@ public class FrmRopa extends javax.swing.JFrame {
         lblTallas.setText("Tallas");
 
         txtTallas.setToolTipText("Ejemplo: S, M, L  o  6-8-10");
+
+        lblStockCurvas.setText("Stock de curvas");
+
+        txtStockCurvas.setToolTipText("Curvas completas, por ejemplo 5");
 
         lblStock.setText("Stock");
 
@@ -129,6 +139,7 @@ public class FrmRopa extends javax.swing.JFrame {
         txtPrecioDetal.setToolTipText("Ejemplo: 25000 o 25.000");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.setColorFondo(new java.awt.Color(142, 98, 196));
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnActualizar.setText("Actualizar");
@@ -148,25 +159,29 @@ public class FrmRopa extends javax.swing.JFrame {
         pnlFormulario.setLayout(pnlFormularioLayout);
         pnlFormularioLayout.setHorizontalGroup(
             pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addComponent(lblDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlFormularioLayout.createSequentialGroup()
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTipoRopa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCaracteristica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTallas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStockCurvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrecioImportador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrecioMayorista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrecioDetal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(cmbTipoRopa, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtColor, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtCaracteristica, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtTallas, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtStockCurvas, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtStock, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtPrecioImportador, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtPrecioMayorista, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
@@ -185,6 +200,10 @@ public class FrmRopa extends javax.swing.JFrame {
             .addGroup(pnlFormularioLayout.createSequentialGroup()
                 .addComponent(lblDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
+                .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoRopa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipoRopa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -206,6 +225,10 @@ public class FrmRopa extends javax.swing.JFrame {
                     .addComponent(txtTallas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStockCurvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStockCurvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
@@ -220,7 +243,7 @@ public class FrmRopa extends javax.swing.JFrame {
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrecioDetal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPrecioDetal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 6, Short.MAX_VALUE)
+                .addGap(0, 20, Short.MAX_VALUE)
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,30 +254,27 @@ public class FrmRopa extends javax.swing.JFrame {
         );
 
         lblBuscar.setText("Buscar:");
-
         txtBuscar.setToolTipText("Escribe para filtrar por cualquier columna");
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarKeyReleased(evt);
             }
         });
-
         lblTotal.setForeground(new java.awt.Color(138, 111, 160));
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotal.setText("0 productos");
-
         tblRopa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
             },
             new String [] {
-                "ID", "Tipo de ropa", "Marca", "Color", "Característica", "Tallas", "Stock", "Precio importador", "Precio mayorista", "Precio al detal"
+                "ID", "Referencia", "Tipo de ropa", "Marca", "Color", "Característica", "Tallas", "Curvas", "Stock", "Precio importador", "Precio mayorista", "Precio al detal"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -274,10 +294,10 @@ public class FrmRopa extends javax.swing.JFrame {
             .addGroup(pnlTablaLayout.createSequentialGroup()
                 .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addGap(12, 12, 12)
                 .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         pnlTablaLayout.setVerticalGroup(
             pnlTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +307,7 @@ public class FrmRopa extends javax.swing.JFrame {
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
-                .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlFondoLayout = new javax.swing.GroupLayout(pnlFondo);
@@ -304,9 +324,9 @@ public class FrmRopa extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFondoLayout.createSequentialGroup()
-                        .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
-                        .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)))
                 .addGap(24, 24, 24))
         );
         pnlFondoLayout.setVerticalGroup(
@@ -316,13 +336,12 @@ public class FrmRopa extends javax.swing.JFrame {
                 .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(pnlFondoLayout.createSequentialGroup()
                         .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
                         .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                    .addComponent(pnlTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
 
@@ -421,7 +440,7 @@ public class FrmRopa extends javax.swing.JFrame {
             modeloTabla.setRowCount(0);
             productos = lista;
             for (Ropa p : productos) {
-                modeloTabla.addRow(new Object[]{p.getId(), p.getTipoRopa(), p.getMarca(), p.getColor(), p.getCaracteristica(), p.getTallas(), p.getStock(), p.getPrecioImportador(), p.getPrecioMayorista(), p.getPrecioDetal()});
+                modeloTabla.addRow(new Object[]{p.getId(), p.getReferencia(), p.getTipoRopa(), p.getMarca(), p.getColor(), p.getCaracteristica(), p.getTallas(), p.getStockCurvas(), p.getStock(), p.getPrecioImportador(), p.getPrecioMayorista(), p.getPrecioDetal()});
             }
         } catch (SQLException e) {
             Mensajes.errorBaseDatos(this, e);
@@ -442,11 +461,13 @@ public class FrmRopa extends javax.swing.JFrame {
     private Ropa obtenerProductoFormulario() {
         Ropa p = new Ropa();
         p.setId(idSeleccionado);
+        p.setReferencia(txtReferencia.getText().trim());
         p.setTipoRopa(cmbTipoRopa.getTexto());
         p.setMarca(txtMarca.getText().trim());
         p.setColor(txtColor.getText().trim());
         p.setCaracteristica(txtCaracteristica.getText().trim());
         p.setTallas(txtTallas.getText().trim());
+        p.setStockCurvas(Formatos.parsearEntero(txtStockCurvas.getText(), "Stock de curvas"));
         p.setStock(Formatos.parsearEntero(txtStock.getText(), "Stock"));
         p.setPrecioImportador(Formatos.parsearPrecio(txtPrecioImportador.getText(), "Precio importador"));
         p.setPrecioMayorista(Formatos.parsearPrecio(txtPrecioMayorista.getText(), "Precio mayorista"));
@@ -455,11 +476,13 @@ public class FrmRopa extends javax.swing.JFrame {
     }
 
     private void mostrarProductoFormulario(Ropa p) {
+        txtReferencia.setText(p.getReferencia());
         cmbTipoRopa.setSelectedItem(p.getTipoRopa());
         txtMarca.setText(p.getMarca());
         txtColor.setText(p.getColor());
         txtCaracteristica.setText(p.getCaracteristica());
         txtTallas.setText(p.getTallas());
+        txtStockCurvas.setText(String.valueOf(p.getStockCurvas()));
         txtStock.setText(String.valueOf(p.getStock()));
         txtPrecioImportador.setText(Formatos.precioParaEditar(p.getPrecioImportador()));
         txtPrecioMayorista.setText(Formatos.precioParaEditar(p.getPrecioMayorista()));
@@ -467,11 +490,13 @@ public class FrmRopa extends javax.swing.JFrame {
     }
 
     private void limpiarFormulario() {
+        txtReferencia.setText("");
         cmbTipoRopa.limpiar();
         txtMarca.setText("");
         txtColor.setText("");
         txtCaracteristica.setText("");
         txtTallas.setText("");
+        txtStockCurvas.setText("");
         txtStock.setText("");
         txtPrecioImportador.setText("");
         txtPrecioMayorista.setText("");
@@ -521,7 +546,9 @@ public class FrmRopa extends javax.swing.JFrame {
     private gestioninventario.vista.componentes.Etiqueta lblPrecioDetal;
     private gestioninventario.vista.componentes.Etiqueta lblPrecioImportador;
     private gestioninventario.vista.componentes.Etiqueta lblPrecioMayorista;
+    private gestioninventario.vista.componentes.Etiqueta lblReferencia;
     private gestioninventario.vista.componentes.Etiqueta lblStock;
+    private gestioninventario.vista.componentes.Etiqueta lblStockCurvas;
     private gestioninventario.vista.componentes.Subtitulo lblSubtitulo;
     private gestioninventario.vista.componentes.Etiqueta lblTallas;
     private gestioninventario.vista.componentes.Etiqueta lblTipoRopa;
@@ -538,7 +565,9 @@ public class FrmRopa extends javax.swing.JFrame {
     private gestioninventario.vista.componentes.CampoTexto txtPrecioDetal;
     private gestioninventario.vista.componentes.CampoTexto txtPrecioImportador;
     private gestioninventario.vista.componentes.CampoTexto txtPrecioMayorista;
+    private gestioninventario.vista.componentes.CampoTexto txtReferencia;
     private gestioninventario.vista.componentes.CampoTexto txtStock;
+    private gestioninventario.vista.componentes.CampoTexto txtStockCurvas;
     private gestioninventario.vista.componentes.CampoTexto txtTallas;
     // End of variables declaration//GEN-END:variables
 }

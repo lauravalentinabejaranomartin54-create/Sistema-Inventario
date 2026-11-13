@@ -4,3 +4,6 @@ nbproject/private/
 video/node_modules/
 video/out/
 video/
+plataforma-movil/backend/node_modules/
+plataforma-movil/app/node_modules/
+plataforma-movil/app/.expo/
